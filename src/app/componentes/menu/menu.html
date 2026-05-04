@@ -1,0 +1,12 @@
+  <header class="navbar">
+    <h2 class="logo">MERAKI joyerias </h2>
+    <nav>
+      <button [routerLink]="'/inicio'">Ir a Login</button>
+      @if(this.usuarioLogeado.rol == 'administrador'){
+          <button [routerLink]="'/administrar-usuarios'">Administrar Usuarios</button>
+
+      }
+      <a href="#">Productos</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>

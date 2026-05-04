@@ -1,0 +1,81 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Contenedor principal */
+.login-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* 🔥 FONDO DIFUMINADO */
+.login-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url('https://www.goldmarket.fr/wp-content/uploads/2025/09/d97888eethumbnail-1110x550.jpeg');
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(8px);
+  transform: scale(1.1);
+
+  z-index: -1;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: 300px;
+  text-align: center;
+  color: white;
+}
+
+
+.input {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.textobajo {
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
