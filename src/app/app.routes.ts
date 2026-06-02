@@ -5,13 +5,21 @@ import { NotFound } from './componentes/not-found/not-found';
 import { Error } from './componentes/error/error';
 import { Registro } from './componentes/registro/registro';
 import { Destacados } from './componentes/destacados/destacados';
+import { AdministrarUsuarios } from './componentes/administrar-usuarios/administrar-usuarios';
 
 export const routes: Routes = [
-  {path:'',component:Inicio},
- {path:'registro',component:Registro},
-  {path:'principal',component:Principal,children:[{path:'**',component:Destacados}]},
-  {path:'inicio',component:Inicio},
-  {path:"error",component:Error},
-  {path:'**',component:NotFound}
-
+  { path: '', component: Inicio },
+  { path: 'inicio', component: Inicio },
+  { path: 'registro', component: Registro },
+  {
+    path: 'principal',
+    component: Principal,
+    children: [
+      { path: '', component: Destacados },
+      { path: 'administrar-usuarios', component: AdministrarUsuarios },
+      { path: '**', component: Destacados },
+    ],
+  },
+  { path: 'error', component: Error },
+  { path: '**', component: NotFound },
 ];

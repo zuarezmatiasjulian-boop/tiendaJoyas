@@ -1,1 +1,58 @@
-<p>registro works!</p>
+<div class="login-container">
+
+  <div class="box">
+    <h2>Crear Cuenta</h2>
+
+    <form (ngSubmit)="registrar()">
+
+      <div class="input">
+        <label for="nombre">Nombre de usuario</label>
+        <input
+          id="nombre"
+          type="text"
+          placeholder="Ingrese su usuario"
+          [(ngModel)]="nombre"
+          name="nombre"
+        >
+      </div>
+
+      <div class="input">
+        <label for="contrasena">Contraseña</label>
+        <input
+          id="contrasena"
+          type="password"
+          placeholder="Ingrese su contraseña"
+          [(ngModel)]="contrasena"
+          name="contrasena"
+        >
+      </div>
+
+      <div class="input">
+        <label for="confirmar">Confirmar contraseña</label>
+        <input
+          id="confirmar"
+          type="password"
+          placeholder="Repita su contraseña"
+          [(ngModel)]="confirmar"
+          name="confirmar"
+        >
+      </div>
+
+      @if (mensajeError) {
+        <p class="error">{{ mensajeError }}</p>
+      }
+      @if (mensajeExito) {
+        <p class="exito">{{ mensajeExito }}</p>
+      }
+
+      <button type="submit">Registrarse</button>
+
+    </form>
+  </div>
+
+  <div class="textobajo">
+    <h3>¿Ya tenés una cuenta?</h3>
+    <a [routerLink]="'/inicio'">Iniciar sesión</a>
+  </div>
+
+</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service';
+import { Usuario } from '../../clases/usuario';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +10,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu.css',
 })
 export class Menu {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  usuarioLogeado = {rol:'administrador'};
+  get usuarioActual(): Usuario | null {
+    return this.authService.getUsuarioActual();
+  }
+
+  cerrarSesion(): void {
+    this.authService.logout();
+    this.router.navigate(['/inicio']);
+  }
 }
