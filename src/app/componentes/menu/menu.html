@@ -1,17 +1,18 @@
-<header class="navbar">
-  <h2 class="logo">MERAKI joyerias</h2>
-  <nav>
+<h2 class="logo" [routerLink]="'/principal'">
+  MERAKI
+  <span>JOYERÍAS</span>
+</h2>
 
-    @if (usuarioActual?.rol === 'administrador') {
-      <button [routerLink]="'/principal/administrar-usuarios'">Administrar Usuarios</button>
-    }
+<nav>
+  <button [routerLink]="'/principal'">Productos</button>
 
-    <a href="#">Productos</a>
-    <a href="#">Contacto</a>
+  <button [routerLink]="'/principal/publicar-producto'">Publicar Producto</button>
+  
+  @if (usuarioActual?.rol === 'administrador') {
+    <button [routerLink]="'/principal/administrar-usuarios'">Administrar Usuarios</button>
+  }
 
-    <span class="usuario-nombre">👤 {{ usuarioActual?.nombre }}</span>
+  <span class="usuario-nombre">👤 {{ usuarioActual?.nombre }}</span>
 
-    <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
-
-  </nav>
-</header>
+  <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+</nav>
