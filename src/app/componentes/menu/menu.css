@@ -1,61 +1,189 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fffbd4;
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
 }
 
-/* NAVBAR */
+.logo span {
+  font-size: .8rem;
+  letter-spacing: 6px;
+  color: #b08d57;
+  -webkit-text-fill-color: #b08d57;
+}
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
-  background: #af7cc9;
-  color: rgb(59, 11, 68);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
   display: flex;
   justify-content: space-between;
-  padding: 15px 30px;
+  align-items: center;
+
+  padding: 18px 50px;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(176,141,87,0.2);
+
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.04);
 }
 
-.navbar a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  margin-left: 15px;
-}
+/* =========================
+   LOGO
+========================= */
 
-/* HERO */
-.titular {
-  text-align: center;
-  padding: 40px;
-  background: #e898f8;
-}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 
-/* PRODUCTOS */
-.productos {
-  padding: 30px;
-}
+  background: linear-gradient(
+    90deg,
+    #b08d57,
+    #e7d3a4,
+    #b08d57
+  );
 
-.grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-.card {
-  background: rgb(176, 188, 199);
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  width: 180px;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-button {
-  background: #6d2369;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
   cursor: pointer;
-  border-radius: 5px;
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.navbar nav button {
+  background: transparent;
+  border: none;
+
+  padding: 10px 18px;
+
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+
+  color: #444;
+  cursor: pointer;
+
+  position: relative;
+
+  transition: all .3s ease;
+}
+
+/* Línea dorada al pasar el mouse */
+
+.navbar nav button::after {
+  content: '';
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #b08d57,
+    #e7d3a4
+  );
+
+  transform: translateX(-50%);
+  transition: width .3s ease;
+}
+
+.navbar nav button:hover {
+  color: #b08d57;
+}
+
+.navbar nav button:hover::after {
+  width: 80%;
+}
+
+/* =========================
+   USUARIO
+========================= */
+
+.usuario-nombre {
+  padding: 10px 18px;
+
+  border-left: 1px solid rgba(176,141,87,0.2);
+
+  color: #7c6a4a;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+/* =========================
+   BOTÓN LOGOUT
+========================= */
+
+.btn-logout {
+  background: linear-gradient(
+    90deg,
+    #b08d57,
+    #e7d3a4
+  ) !important;
+
+  color: white !important;
+
+  border-radius: 30px !important;
+
+  padding: 12px 22px !important;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 5px 15px rgba(176,141,87,0.25);
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(176,141,87,0.35);
+}
+
+/* Evita la línea inferior del logout */
+
+.btn-logout::after {
+  display: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
 }

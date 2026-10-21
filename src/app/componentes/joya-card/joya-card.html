@@ -1,0 +1,27 @@
+<!-- Tarjeta elegante de joyería -->
+<div class="joya-card">
+
+  <!-- Imagen del producto -->
+  <div class="joya-card__imagen-wrap">
+    <img class="joya-card__imagen" [src]="joya.imagen" [alt]="joya.nombre" />
+    <!-- Badge de categoría sobre la imagen -->
+    <span class="joya-card__categoria">{{ joya.categoria }}</span>
+  </div>
+
+  <!-- Información del producto -->
+  <div class="joya-card__info">
+    <h3 class="joya-card__nombre">{{ joya.nombre }}</h3>
+
+    <p class="joya-card__precio">{{ joya.precio | currency:'ARS':'symbol':'1.0-0' }}</p>
+
+    <p class="joya-card__stock">
+      Stock disponible: <strong>{{ joya.stock }}</strong>
+    </p>
+
+    <!-- Botón que emite el evento al Padre -->
+    <button class="joya-card__btn" (click)="onAgregar()" [disabled]="joya.stock === 0">
+      Agregar al Carrito
+    </button>
+  </div>
+
+</div>

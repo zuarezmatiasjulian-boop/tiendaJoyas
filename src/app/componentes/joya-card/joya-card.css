@@ -1,0 +1,119 @@
+/* ====================================
+   TARJETA DE JOYERÍA - COMPONENTE HIJO
+   ==================================== */
+
+.joya-card {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(176, 141, 87, 0.2);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.joya-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(176, 141, 87, 0.2);
+  border-color: rgba(176, 141, 87, 0.45);
+}
+
+/* ---------- Imagen ---------- */
+
+.joya-card__imagen-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #faf8f3;
+}
+
+.joya-card__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.joya-card:hover .joya-card__imagen {
+  transform: scale(1.06);
+}
+
+/* Badge de categoría */
+.joya-card__categoria {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(90deg, #b08d57, #e7d3a4);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+/* ---------- Info ---------- */
+
+.joya-card__info {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.joya-card__nombre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.joya-card__precio {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #b08d57;
+  margin-bottom: 10px;
+}
+
+.joya-card__stock {
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.joya-card__stock strong {
+  color: #555;
+}
+
+/* ---------- Botón ---------- */
+
+.joya-card__btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #b08d57, #e7d3a4, #b08d57);
+  background-size: 200% auto;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.joya-card__btn:hover:not(:disabled) {
+  background-position: right center;
+  box-shadow: 0 10px 22px rgba(176, 141, 87, 0.38);
+  transform: scale(1.02);
+}
+
+.joya-card__btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

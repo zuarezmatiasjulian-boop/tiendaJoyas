@@ -1,0 +1,97 @@
+[debug] [2026-10-13T23:38:02.169Z] ----------------------------------------------------------------------
+[debug] [2026-10-13T23:38:02.171Z] Command:       D:\Programas\node.exe C:\Users\matuz\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-10-13T23:38:02.171Z] CLI Version:   15.33.0
+[debug] [2026-10-13T23:38:02.171Z] Platform:      win32
+[debug] [2026-10-13T23:38:02.171Z] Node Version:  v24.19.0
+[debug] [2026-10-13T23:38:02.172Z] Detected Agent: unknown
+[debug] [2026-10-13T23:38:02.172Z] Time:          Tue Oct 13 2026 20:38:02 GMT-0300 (hora estándar de Argentina)
+[debug] [2026-10-13T23:38:02.172Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\matuz\tiendaJoyas
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-10-13T23:39:54.514Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-10-13T23:39:54.514Z] > authorizing via signed-in user (matu.zuarez@gmail.com)
+[debug] [2026-10-13T23:39:54.524Z] Checked if tokens are valid: false, expires at: 1791935590092
+[debug] [2026-10-13T23:39:54.524Z] Checked if tokens are valid: false, expires at: 1791935590092
+[debug] [2026-10-13T23:39:54.524Z] > refreshing access token with scopes: []
+[debug] [2026-10-13T23:39:54.526Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-10-13T23:39:54.526Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-10-13T23:39:54.655Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-10-13T23:39:54.655Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-10-13T23:39:54.689Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/beltran-8e383 [none]
+[debug] [2026-10-13T23:39:55.048Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/beltran-8e383 200
+[debug] [2026-10-13T23:39:55.049Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/beltran-8e383 {"projectId":"beltran-8e383","projectNumber":"735434118592","displayName":"beltran","name":"projects/beltran-8e383","resources":{"hostingSite":"beltran-8e383"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_0b1bed74-9a97-4067-9209-8a41aea570c6"}
+[info] i  Using project beltran-8e383 (beltran) . 
+[info] 
+=== Firestore Setup
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-10-13T23:39:55.065Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:55.065Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:55.065Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases [none]
+[debug] [2026-10-13T23:39:55.755Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases 200
+[debug] [2026-10-13T23:39:55.755Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases {"databases":[{"name":"projects/beltran-8e383/databases/(default)","uid":"2d51e45b-b033-47e1-942f-ebc4c1ae7751","createTime":"2026-09-14T19:54:15.582875Z","updateTime":"2026-09-14T19:54:15.582875Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-10-13T22:39:57.666575Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IMrRu6iVuJcDMLiS7Prs7pYD"}]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2026-10-13T23:39:58.769Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:58.769Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:58.769Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/releases pageSize=10&pageToken=
+[debug] [2026-10-13T23:39:59.957Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/releases 200
+[debug] [2026-10-13T23:39:59.957Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/releases {"releases":[{"name":"projects/beltran-8e383/releases/cloud.firestore","rulesetName":"projects/beltran-8e383/rulesets/b082ce76-fc39-4a2f-b2b6-ce917ee11b7d","createTime":"2026-09-14T19:54:18.923614Z","updateTime":"2026-09-14T19:54:18.923614Z"}]}
+[debug] [2026-10-13T23:39:59.957Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:59.957Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:39:59.957Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/rulesets/b082ce76-fc39-4a2f-b2b6-ce917ee11b7d [none]
+[debug] [2026-10-13T23:40:01.061Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/rulesets/b082ce76-fc39-4a2f-b2b6-ce917ee11b7d 200
+[debug] [2026-10-13T23:40:01.061Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/beltran-8e383/rulesets/b082ce76-fc39-4a2f-b2b6-ce917ee11b7d [omitted]
+[info] i  Downloaded the existing Firestore Security Rules from the Firebase console 
+[info] i  firestore.rules is unchanged 
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2026-10-13T23:40:08.209Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:40:08.209Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:40:08.209Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:40:08.209Z] Checked if tokens are valid: true, expires at: 1791938393656
+[debug] [2026-10-13T23:40:08.210Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2026-10-13T23:40:08.211Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2026-10-13T23:40:09.235Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2026-10-13T23:40:09.235Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/beltran-8e383/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2026-10-13T23:40:09.235Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2026-10-13T23:40:09.235Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/beltran-8e383/databases/(default)/collectionGroups/-/indexes {}
+[info] i  Downloaded the existing Firestore indexes from the Firebase console 
+[info] i  firestore.indexes.json is unchanged 
+[info] 
+=== Authentication Setup
+[debug] [2026-10-13T23:40:55.532Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\matuz\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:101:37)
+    at Interface.emit (node:events:509:28)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1327:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:284:20)
+    at ReadStream.emit (node:events:521:24)
+    at emitKeys (node:internal/readline/utils:371:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+    at ReadStream.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+[error] 
+[error] Error: An unexpected error has occurred.

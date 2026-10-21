@@ -1,1 +1,66 @@
-<p>administrar-usuarios works!</p>
+<div class="admin-page">
+
+  <div class="admin-header">
+    <h1>Administrar Usuarios</h1>
+    <p>Lista de perfiles de usuarios : </p>
+  </div>
+
+
+ 
+  @if (mensajeError) {
+    <div class="msg msg-error">⚠ {{ mensajeError }}</div>
+  }
+  @if (mensajeExito) {
+    <div class="msg msg-exito">✓ {{ mensajeExito }}</div>
+  }
+
+
+
+
+  <div class="tabla-wrap">
+    <table class="tabla-usuarios">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Usuario</th>
+          <th>Rol</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (u of usuarios; track u.nombre; let i = $index) {
+          <tr [class.fila-admin]="u.rol === 'administrador'">
+            <td class="num">{{ i + 1 }}</td>
+            <td class="nombre-cell">
+              <span class="avatar-mini">{{ u.nombre.charAt(0).toUpperCase() }}</span>
+              {{ u.nombre }}
+            </td>
+            <td>
+              <span class="badge" [class.badge-admin]="u.rol === 'administrador'"
+                                  [class.badge-user]="u.rol !== 'administrador'">
+                {{ getRolLabel(u.rol) }}
+              </span>
+            </td>
+            <td>
+              @if (u.rol !== 'administrador') {
+                <button class="btn-eliminar" (click)="eliminar(u.nombre)">
+                  Eliminar
+                </button>
+              } @else {
+                <span class="no-accion">—</span>
+              }
+            </td>
+          </tr>
+        }
+        @if (usuarios.length === 0) {
+          <tr>
+            <td colspan="4" class="sin-datos">No hay usuarios registrados.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONTADOR  -->
+  <p class="contador">Total: {{ usuarios.length }} usuario{{ usuarios.length !== 1 ? 's' : '' }}</p>
+</div>

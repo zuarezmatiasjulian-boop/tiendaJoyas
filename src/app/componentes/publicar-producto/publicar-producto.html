@@ -1,0 +1,53 @@
+<div class="login-container">
+  <div class="box">
+    <h2>Publicar Producto</h2>
+
+    <form (ngSubmit)="publicar()">
+
+      <div class="input">
+        <label for="nombre">Nombre del producto</label>
+        <input
+          id="nombre"
+          type="text"
+          placeholder="Ej: Anillo de oro 18k"
+          [(ngModel)]="nombre"
+          name="nombre"
+        >
+      </div>
+
+      <div class="input">
+        <label for="precio">Precio ($)</label>
+        <input
+          id="precio"
+          type="number"
+          placeholder="Ej: 25000"
+          [(ngModel)]="precio"
+          name="precio"
+          min="1"
+        >
+      </div>
+
+      <div class="input">
+        <label for="descripcion">Descripción</label>
+        <textarea
+          id="descripcion"
+          placeholder="Describí tu producto..."
+          [(ngModel)]="descripcion"
+          name="descripcion"
+          rows="4"
+        ></textarea>
+      </div>
+
+      @if (mensajeError) {
+        <p class="error">{{ mensajeError }}</p>
+      }
+      @if (mensajeExito) {
+        <p class="exito">{{ mensajeExito }}</p>
+        <button type="button" (click)="verProductos()">Ver todos los productos</button>
+      }
+
+      <button type="submit">Publicar</button>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<!-- ====================================================
+     CATÁLOGO PRINCIPAL DE JOYAS — MERAKI Joyerías
+     Vista única y unificada: buscador + grilla de tarjetas
+     ==================================================== -->
+
+<section class="catalogo-container">
+
+  <!-- Encabezado de la sección -->
+  <div class="catalogo-header">
+    <h1 class="catalogo-titulo">Catálogo de Joyas</h1>
+    <p class="catalogo-subtitulo">Descubrí nuestra colección exclusiva</p>
+  </div>
+
+  <!-- ── ÚNICO buscador vinculado a textoBusqueda ── -->
+  <div class="buscador-wrapper">
+    <input
+      id="buscador-joyas"
+      class="buscador-input"
+      type="text"
+      placeholder="Buscar por nombre o categoría..."
+      [(ngModel)]="textoBusqueda"
+      name="textoBusqueda"
+      autocomplete="off"
+    />
+    <span class="buscador-icono">🔍</span>
+  </div>
+
+  <!-- ── ÚNICA grilla de productos filtrados por el pipe ── -->
+  <div class="catalogo-grilla row">
+
+    @if ((listaJoyas | filtroJoya: textoBusqueda).length === 0) {
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados">
+        <p>No se encontraron joyas para "<strong>{{ textoBusqueda }}</strong>".</p>
+      </div>
+    } @else {
+      @for (item of listaJoyas | filtroJoya: textoBusqueda; track item.id) {
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <!-- Componente hijo: recibe la joya, el usuario y emite el evento del carrito -->
+          <app-joya-card
+            [joya]="item"
+            [usuarioActual]="usuarioLogueado"
+            (agregarAlCarrito)="onAgregarAlCarrito($event)"
+          ></app-joya-card>
+        </div>
+      }
+    }
+
+  </div>
+
+  <!-- Notificación de carrito (se muestra cuando se agrega un producto) -->
+  @if (mensajeCarrito) {
+    <div class="carrito-notif">
+      🛒 {{ mensajeCarrito }}
+    </div>
+  }
+
+</section>

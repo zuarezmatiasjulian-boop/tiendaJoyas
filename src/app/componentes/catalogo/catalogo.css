@@ -1,0 +1,107 @@
+/* ============================================================
+   CATÁLOGO PRINCIPAL — MERAKI Joyerías
+   Estilos propios del componente Catalogo
+   ============================================================ */
+
+/* ── Contenedor general ── */
+.catalogo-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem;
+}
+
+/* ── Encabezado ── */
+.catalogo-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.catalogo-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  letter-spacing: 0.04em;
+}
+
+.catalogo-subtitulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 0.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Buscador ── */
+.buscador-wrapper {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+
+.buscador-input {
+  width: 100%;
+  padding: 0.75rem 2.8rem 0.75rem 1.1rem;
+  border: 1.5px solid #d4b896;
+  border-radius: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  background: #fffdf8;
+  color: #2d2d2d;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.buscador-input:focus {
+  border-color: #c9a84c;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+.buscador-icono {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  color: #c9a84c;
+}
+
+/* ── Grilla de productos ── */
+.catalogo-grilla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0; /* Bootstrap maneja el gutter con las clases col/row */
+}
+
+/* ── Sin resultados ── */
+.sin-resultados {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #888;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+}
+
+/* ── Notificación de carrito ── */
+.carrito-notif {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #2d2d2d;
+  color: #f5c842;
+  padding: 0.9rem 1.4rem;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  animation: slideIn 0.3s ease;
+  z-index: 1000;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
