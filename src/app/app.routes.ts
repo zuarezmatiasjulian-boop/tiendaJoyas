@@ -20,7 +20,6 @@ export const routes: Routes = [
     path: 'principal',
     component: Principal,
     children: [
-
       // ── Ruta pública: cualquier usuario logueado puede verla ──────────────
       { path: '', component: Catalogo },
 
@@ -36,7 +35,6 @@ export const routes: Routes = [
         component: AdministrarUsuarios,
         canActivate: [adminGuard],   // 🔒 Solo administrador
       },
-
     ],
   },
 

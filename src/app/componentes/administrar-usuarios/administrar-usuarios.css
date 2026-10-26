@@ -273,7 +273,6 @@
     display: none;
   }
 }
-
 /* ── Lista de ítems dentro de la tabla de pedidos ── */
 .pedido-items {
   list-style: none;

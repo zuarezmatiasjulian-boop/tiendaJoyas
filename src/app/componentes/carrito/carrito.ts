@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { Joya } from '../../clases/joya';
 import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CurrencyPipe, NgFor, NgIf],
+  imports: [CurrencyPipe],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })

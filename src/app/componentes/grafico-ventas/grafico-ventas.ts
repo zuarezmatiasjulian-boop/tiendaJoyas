@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser, NgIf } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 // ── Firestore ────────────────────────────────────────────────────────────────
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
@@ -12,7 +12,7 @@ Chart.register(...registerables); // necesario en Chart.js v3+
 @Component({
   selector: 'app-grafico-ventas',
   standalone: true,
-  imports: [NgIf],
+  imports: [],
   templateUrl: './grafico-ventas.html',
   styleUrl: './grafico-ventas.css',
 })

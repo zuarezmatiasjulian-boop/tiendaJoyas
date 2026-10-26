@@ -1,18 +1,11 @@
-<!-- ====================================================
-     CARRITO DE COMPRAS — MERAKI Joyerías
-     Componente hijo: recibe itemsCarrito vía @Input()
-     ==================================================== -->
-
 <div class="carrito-panel">
 
   <h2 class="carrito-titulo">🛒 Tu Carrito</h2>
 
-  <!-- Si el carrito está vacío mostramos un mensaje -->
   @if (itemsCarrito.length === 0) {
     <p class="carrito-vacio">El carrito está vacío.</p>
   } @else {
 
-    <!-- Lista de productos agregados -->
     <ul class="carrito-lista">
       @for (item of itemsCarrito; track item.id) {
         <li class="carrito-item">
@@ -22,13 +15,12 @@
       }
     </ul>
 
-    <!-- Total calculado llamando al método del componente -->
     <div class="carrito-total">
       <strong>Total:</strong>
       <span>{{ calcularTotal() | currency:'ARS':'symbol':'1.0-0' }}</span>
     </div>
 
-    <!-- Botón para vaciar/finalizar compra -->
+    
     <button class="carrito-btn-comprar" (click)="vaciarCarrito()">
       ✅ Finalizar Compra / Vaciar Carrito
     </button>
@@ -37,9 +29,7 @@
 
 </div>
 
-<!-- ════════════════════════════════════════════════════════════
-     MODAL DE CONFIRMACIÓN DE COMPRA (Elegante y sin alert)
-     ════════════════════════════════════════════════════════════ -->
+
 @if (mostrarModalGracias) {
   <div class="modal-backdrop" (click)="cerrarModal()">
     <div class="modal-card" (click)="$event.stopPropagation()">

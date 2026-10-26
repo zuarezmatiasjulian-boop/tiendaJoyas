@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { AuthService } from '../../servicios/auth.service';
 import { Usuario } from '../../clases/usuario';
 import { GraficoVentas } from '../grafico-ventas/grafico-ventas';
 
 @Component({
   selector: 'app-administrar-usuarios',
-  imports: [CommonModule, GraficoVentas],
+  imports: [CurrencyPipe, GraficoVentas],
   templateUrl: './administrar-usuarios.html',
   styleUrl: './administrar-usuarios.css',
 })
@@ -46,7 +46,6 @@ export class AdministrarUsuarios implements OnInit {
     // Si hay pedidos los parseamos; si no, el arreglo queda vacío
     this.pedidos = guardados ? JSON.parse(guardados) : [];
   }
-
  
 
   eliminar(nombre: string): void {
