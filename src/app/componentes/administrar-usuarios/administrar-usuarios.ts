@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../servicios/auth.service';
 import { Usuario } from '../../clases/usuario';
+import { GraficoVentas } from '../grafico-ventas/grafico-ventas';
 
 @Component({
   selector: 'app-administrar-usuarios',
-  imports: [CommonModule],
+  imports: [CommonModule, GraficoVentas],
   templateUrl: './administrar-usuarios.html',
   styleUrl: './administrar-usuarios.css',
 })
@@ -14,6 +15,9 @@ export class AdministrarUsuarios implements OnInit {
   usuarios: Usuario[] = []; // Lista de todos los usuarios registrados
   mensajeExito: string = '';
   mensajeError: string = '';
+
+  // Lista de pedidos guardados por los clientes al finalizar su compra
+  pedidos: any[] = [];
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -28,11 +32,19 @@ export class AdministrarUsuarios implements OnInit {
     }
 
     this.cargarUsuarios();
+    this.cargarPedidos();
   }
 
   // Obtiene la lista de usuarios desde el service
   cargarUsuarios(): void {
     this.usuarios = this.authService.getUsuarios();
+  }
+
+  // Lee los pedidos desde localStorage (misma lógica que usuarios)
+  cargarPedidos(): void {
+    const guardados = localStorage.getItem('mj_pedidos');
+    // Si hay pedidos los parseamos; si no, el arreglo queda vacío
+    this.pedidos = guardados ? JSON.parse(guardados) : [];
   }
 
  

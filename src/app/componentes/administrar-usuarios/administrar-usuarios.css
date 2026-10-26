@@ -273,3 +273,22 @@
     display: none;
   }
 }
+
+/* ── Lista de ítems dentro de la tabla de pedidos ── */
+.pedido-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pedido-items li {
+  font-size: 0.82rem;
+  color: #5a4a35;
+  padding: 2px 8px;
+  background: rgba(176, 141, 87, 0.08);
+  border-radius: 10px;
+  display: inline-block;
+}

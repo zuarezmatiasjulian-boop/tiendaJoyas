@@ -1,0 +1,26 @@
+
+
+<div class="grafico-card">
+
+  <div class="grafico-card__header">
+    <h2 class="grafico-card__titulo">📊 Joyas Más Vendidas</h2>
+    <p class="grafico-card__subtitulo">Datos en tiempo real desde Firebase</p>
+  </div>
+
+  @if (cargando) {
+    <div class="grafico-loading">
+      <span class="spinner"></span>
+      <p>Cargando datos desde Firebase...</p>
+    </div>
+  }
+
+  @if (mensajeError) {
+    <div class="grafico-error">⚠️ {{ mensajeError }}</div>
+  }
+
+  <!-- Canvas del gráfico — Chart.js lo usa para dibujar -->
+  <div class="grafico-canvas-wrap" [style.display]="cargando ? 'none' : 'block'">
+    <canvas #graficoCanvas></canvas>
+  </div>
+
+</div>

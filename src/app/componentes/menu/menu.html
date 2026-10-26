@@ -1,18 +1,39 @@
-<h2 class="logo" [routerLink]="'/principal'">
-  MERAKI
-  <span>JOYERÍAS</span>
-</h2>
+<!-- ============================================================
+     NAVBAR — MERAKI Joyerías
+     Estructura:
+       [Logo]   [Nav links izquierda]   [Usuario + Logout derecha]
+     ============================================================ -->
 
-<nav>
-  <button [routerLink]="'/principal'">Productos</button>
+<header class="navbar">
 
-  <button [routerLink]="'/principal/publicar-producto'">Publicar Producto</button>
-  
-  @if (usuarioActual?.rol === 'administrador') {
-    <button [routerLink]="'/principal/administrar-usuarios'">Administrar Usuarios</button>
-  }
+  <!-- ── LOGO ── -->
+  <h2 class="logo" [routerLink]="'/principal'">
+    MERAKI <span>JOYERÍAS</span>
+  </h2>
 
-  <span class="usuario-nombre">👤 {{ usuarioActual?.nombre }}</span>
+  <!-- ── LINKS DE NAVEGACIÓN (centro-izquierda) ── -->
+  <nav class="nav-links">
 
-  <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
-</nav>
+    <button class="btn-nav" [routerLink]="'/principal'">
+      Productos
+    </button>
+
+    <button class="btn-nav" [routerLink]="'/principal/publicar-producto'">
+      Publicar Producto
+    </button>
+
+    @if (usuarioActual?.rol === 'administrador') {
+      <button class="btn-nav" [routerLink]="'/principal/administrar-usuarios'">
+        Administrar Usuarios
+      </button>
+    }
+
+  </nav>
+
+  <!-- ── ÁREA DE USUARIO (derecha) ── -->
+  <div class="nav-usuario">
+    <span class="usuario-nombre">👤 {{ usuarioActual?.nombre }}</span>
+    <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+</header>

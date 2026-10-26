@@ -1,5 +1,7 @@
 <!-- Tarjeta elegante de joyería -->
-<div class="joya-card">
+<!-- appHoverColor → directiva personalizada: cambia el fondo al pasar el mouse -->
+<div class="joya-card" appHoverColor>
+
 
   <!-- Imagen del producto -->
   <div class="joya-card__imagen-wrap">
@@ -14,9 +16,12 @@
 
     <p class="joya-card__precio">{{ joya.precio | currency:'ARS':'symbol':'1.0-0' }}</p>
 
+    <!-- Stock disponible oculto (si el producto está publicado en la vista significa que hay stock) -->
+    <!--
     <p class="joya-card__stock">
       Stock disponible: <strong>{{ joya.stock }}</strong>
     </p>
+    -->
 
     <!-- Botón que emite el evento al Padre -->
     <button class="joya-card__btn" (click)="onAgregar()" [disabled]="joya.stock === 0">

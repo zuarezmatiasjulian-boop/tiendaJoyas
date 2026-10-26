@@ -1,17 +1,22 @@
 <!-- ====================================================
      CATÁLOGO PRINCIPAL DE JOYAS — MERAKI Joyerías
-     Vista única y unificada: buscador + grilla de tarjetas
+     Layout de dos columnas:
+       Izquierda → grilla de tarjetas (col-md-8)
+       Derecha   → panel de comentarios en tiempo real (col-md-4)
      ==================================================== -->
 
 <section class="catalogo-container">
 
-  <!-- Encabezado de la sección -->
+  <!-- ── Encabezado ── -->
   <div class="catalogo-header">
     <h1 class="catalogo-titulo">Catálogo de Joyas</h1>
     <p class="catalogo-subtitulo">Descubrí nuestra colección exclusiva</p>
+    <button class="btn-csv" (click)="descargarCatalogoCSV()">
+      ⬇️ Descargar Catálogo CSV
+    </button>
   </div>
 
-  <!-- ── ÚNICO buscador vinculado a textoBusqueda ── -->
+  <!-- ── Buscador ── -->
   <div class="buscador-wrapper">
     <input
       id="buscador-joyas"
@@ -25,34 +30,122 @@
     <span class="buscador-icono">🔍</span>
   </div>
 
-  <!-- ── ÚNICA grilla de productos filtrados por el pipe ── -->
-  <div class="catalogo-grilla row">
+  <!-- ══════════════════════════════════════════════════════════════
+       LAYOUT DOS COLUMNAS
+       col-md-8: grilla de joyas  |  col-md-4: panel de comentarios
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="row">
 
-    @if ((listaJoyas | filtroJoya: textoBusqueda).length === 0) {
-      <!-- Mensaje cuando no hay resultados -->
-      <div class="sin-resultados">
-        <p>No se encontraron joyas para "<strong>{{ textoBusqueda }}</strong>".</p>
+    <!-- ── COLUMNA IZQUIERDA: grilla de productos ── -->
+    <div class="col-md-8">
+      <div class="catalogo-grilla row">
+
+        @if ((listaJoyas | filtroJoya: textoBusqueda).length === 0) {
+          <div class="sin-resultados">
+            <p>No se encontraron joyas para "<strong>{{ textoBusqueda }}</strong>".</p>
+          </div>
+        } @else {
+
+          @for (item of listaJoyas | filtroJoya: textoBusqueda; track item.id) {
+            <div class="col-sm-6 col-lg-4 mb-4">
+
+              <!-- (click) llama a seleccionarJoya() en el padre y abre el panel -->
+              <div (click)="seleccionarJoya(item)"
+                   class="joya-card-wrapper"
+                   [class.seleccionada]="joyaSeleccionada?.id === item.id"
+                   title="Clic para ver comentarios">
+
+                <!-- appHoverColor: directiva que cambia el color al pasar el mouse -->
+                <app-joya-card
+                  [joya]="item"
+                  [usuarioActual]="usuarioLogueado"
+                  (agregarAlCarrito)="onAgregarAlCarrito($event)"
+                ></app-joya-card>
+
+              </div>
+            </div>
+          }
+        }
+
       </div>
-    } @else {
-      @for (item of listaJoyas | filtroJoya: textoBusqueda; track item.id) {
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-          <!-- Componente hijo: recibe la joya, el usuario y emite el evento del carrito -->
-          <app-joya-card
-            [joya]="item"
-            [usuarioActual]="usuarioLogueado"
-            (agregarAlCarrito)="onAgregarAlCarrito($event)"
-          ></app-joya-card>
-        </div>
-      }
-    }
+    </div><!-- fin col-md-8 -->
 
-  </div>
 
-  <!-- Notificación de carrito (se muestra cuando se agrega un producto) -->
+    <!-- ── COLUMNA DERECHA: panel de comentarios en tiempo real ── -->
+    <div class="col-md-4">
+      <div class="foro-panel">
+
+        <!-- Estado: sin joya seleccionada -->
+        @if (!joyaSeleccionada) {
+          <div class="foro-vacio">
+            <span class="foro-icono">💬</span>
+            <p>Hacé clic en una joya<br>para ver los comentarios</p>
+          </div>
+        }
+
+        <!-- Estado: joya seleccionada → mostrar foro -->
+        @if (joyaSeleccionada) {
+
+          <!-- Info de la joya seleccionada -->
+          <div class="foro-joya-info">
+            <h3 class="foro-joya-nombre">{{ joyaSeleccionada.nombre }}</h3>
+            <span class="foro-joya-precio">
+              {{ joyaSeleccionada.precio | currency:'ARS':'symbol':'1.0-0' }}
+            </span>
+            <span class="foro-joya-cat">{{ joyaSeleccionada.categoria }}</span>
+          </div>
+
+          <h4 class="foro-titulo">💬 Comentarios</h4>
+
+          <!-- Lista de comentarios — se actualiza sola vía onSnapshot -->
+          <div class="foro-lista">
+            @if (comentarios.length === 0) {
+              <p class="foro-sin-comentarios">Sé el primero en comentar 🌟</p>
+            }
+
+            @for (c of comentarios; track $index) {
+              <div class="foro-mensaje">
+                <!-- Nombre del usuario en mayúsculas, como el ejemplo del profe -->
+                <span class="foro-usuario">{{ c.usuario.toUpperCase() }}</span>
+                <span class="foro-separador">:</span>
+                <span class="foro-texto">{{ c.texto }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- Input para escribir un nuevo comentario -->
+          <div class="foro-form">
+            <input
+              class="foro-input"
+              type="text"
+              placeholder="Escribí tu comentario..."
+              [(ngModel)]="nuevoComentario"
+              name="nuevoComentario"
+              (keyup.enter)="enviarComentario()"
+            />
+            <button
+              class="foro-btn-enviar"
+              (click)="enviarComentario()"
+              [disabled]="!nuevoComentario.trim()">
+              Enviar
+            </button>
+          </div>
+
+        }<!-- fin @if joyaSeleccionada -->
+
+      </div><!-- fin foro-panel -->
+    </div><!-- fin col-md-4 -->
+
+  </div><!-- fin row -->
+
+  <!-- Notificación del carrito -->
   @if (mensajeCarrito) {
     <div class="carrito-notif">
       🛒 {{ mensajeCarrito }}
     </div>
   }
+
+  <!-- Componente carrito -->
+  <app-carrito [itemsCarrito]="carrito"></app-carrito>
 
 </section>

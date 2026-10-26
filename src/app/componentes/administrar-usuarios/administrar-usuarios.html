@@ -17,6 +17,9 @@
 
 
 
+  <!-- ── GRÁFICO DE VENTAS ─── -->
+  <app-grafico-ventas></app-grafico-ventas>
+
   <div class="tabla-wrap">
     <table class="tabla-usuarios">
       <thead>
@@ -63,4 +66,68 @@
 
   <!-- CONTADOR  -->
   <p class="contador">Total: {{ usuarios.length }} usuario{{ usuarios.length !== 1 ? 's' : '' }}</p>
+
+  <!-- ════════════════════════════════════════════════════════
+       PEDIDOS RECIENTES
+       Lee el arreglo `pedidos` que se cargó desde localStorage
+       con la misma lógica que la tabla de usuarios de arriba.
+       ════════════════════════════════════════════════════════ -->
+  <div class="admin-header" style="margin-top: 2.5rem;">
+    <h2> Pedidos Recientes</h2>
+    <p>Compras finalizadas por los clientes</p>
+  </div>
+
+  <div class="tabla-wrap">
+    <table class="tabla-usuarios">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Ítems comprados</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        @for (pedido of pedidos; track $index; let i = $index) {
+          <tr>
+            <td class="num">{{ i + 1 }}</td>
+
+            <!-- Nombre del cliente con avatar de inicial -->
+            <td class="nombre-cell">
+              <span class="avatar-mini">{{ pedido.cliente.charAt(0).toUpperCase() }}</span>
+              {{ pedido.cliente }}
+            </td>
+
+            <!-- Fecha en que se finalizó la compra -->
+            <td>{{ pedido.fecha }}</td>
+
+            <!-- Lista de nombres de joyas compradas -->
+            <td>
+              <ul class="pedido-items">
+                @for (item of pedido.items; track $index) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </td>
+
+            <!-- Total formateado con el pipe currency de Angular -->
+            <td><strong>{{ pedido.total | currency:'ARS':'symbol':'1.0-0' }}</strong></td>
+          </tr>
+        }
+
+        <!-- Mensaje cuando todavía no hay pedidos -->
+        @if (pedidos.length === 0) {
+          <tr>
+            <td colspan="5" class="sin-datos">Aún no hay pedidos registrados.</td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+  </div>
+
+  <p class="contador">Total: {{ pedidos.length }} pedido{{ pedidos.length !== 1 ? 's' : '' }}</p>
+
 </div>

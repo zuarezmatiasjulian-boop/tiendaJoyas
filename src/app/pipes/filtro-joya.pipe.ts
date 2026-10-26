@@ -18,16 +18,24 @@ export class FiltroJoyaPipe implements PipeTransform {
    */
   transform(joyas: Joya[], termino: string): Joya[] {
 
-    // Si la lista está vacía o no hay término de búsqueda, devuelve todo sin cambios
-    if (!joyas || !termino || termino.trim() === '') {
-      return joyas;
+    // Si la lista no existe, retorna arreglo vacío
+    if (!joyas) {
+      return [];
+    }
+
+    // Criterio de negocio: solo mostrar joyas con stock disponible (stock > 0)
+    const joyasConStock = joyas.filter(joya => joya.stock > 0);
+
+    // Si no hay término de búsqueda, devuelve las joyas con stock disponible
+    if (!termino || termino.trim() === '') {
+      return joyasConStock;
     }
 
     // Convierte el término a minúsculas para comparar sin importar mayúsculas
     const texto = termino.trim().toLowerCase();
 
-    // Filtra: mantiene solo las joyas cuyo nombre o categoría incluyan el término
-    return joyas.filter(joya =>
+    // Filtra: mantiene solo las joyas con stock cuyo nombre o categoría incluyan el término
+    return joyasConStock.filter(joya =>
       joya.nombre.toLowerCase().includes(texto) ||
       joya.categoria.toLowerCase().includes(texto)
     );

@@ -1,189 +1,211 @@
-.logo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
+/* =============================================================
+   NAVBAR — MERAKI Joyerías
+   Paleta: dorado #b08d57 / claro #e7d3a4 / texto #444 / #7c6a4a
+   ============================================================= */
 
-.logo span {
-  font-size: .8rem;
-  letter-spacing: 6px;
-  color: #b08d57;
-  -webkit-text-fill-color: #b08d57;
-}
-/* =========================
-   NAVBAR
-========================= */
-
+/* ── Contenedor principal ── */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;  /* logo | nav | usuario */
+  gap: 24px;
 
-  padding: 18px 50px;
+  padding: 14px 48px;
 
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid rgba(176,141,87,0.2);
-
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(176, 141, 87, 0.20);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
 }
 
-/* =========================
+/* =============================================================
    LOGO
-========================= */
+   ============================================================= */
 
 .logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 1.85rem;
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
+  line-height: 1.1;
+  flex-shrink: 0;
 
-  background: linear-gradient(
-    90deg,
-    #b08d57,
-    #e7d3a4,
-    #b08d57
-  );
-
+  background: linear-gradient(90deg, #b08d57 0%, #e7d3a4 50%, #b08d57 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
 }
 
-/* =========================
-   NAVEGACIÓN
-========================= */
+.logo:hover {
+  opacity: 0.85;
+}
 
-.navbar nav {
+.logo span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 7px;
+  font-weight: 400;
+  /* hereda el gradiente del padre */
+}
+
+/* =============================================================
+   NAV LINKS (centro)
+   ============================================================= */
+
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 4px;
+  flex: 1;           /* ocupa el espacio central disponible */
 }
 
-/* =========================
-   BOTONES
-========================= */
-
-.navbar nav button {
+/* ── Botones de navegación ── */
+.btn-nav {
   background: transparent;
   border: none;
+  border-radius: 8px;
 
-  padding: 10px 18px;
+  padding: 9px 18px;
 
-  font-size: 0.95rem;
-  letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #5a4a35;
 
-  color: #444;
   cursor: pointer;
-
   position: relative;
-
-  transition: all .3s ease;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
-/* Línea dorada al pasar el mouse */
-
-.navbar nav button::after {
+/* Línea dorada inferior al hacer hover */
+.btn-nav::after {
   content: '';
-
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 50%;
-
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    #b08d57,
-    #e7d3a4
-  );
-
-  transform: translateX(-50%);
-  transition: width .3s ease;
+  background: linear-gradient(90deg, #b08d57, #e7d3a4, #b08d57);
+  border-radius: 2px;
+  transition: width 0.28s ease;
 }
 
-.navbar nav button:hover {
+.btn-nav:hover {
   color: #b08d57;
+  background: rgba(176, 141, 87, 0.07);
 }
 
-.navbar nav button:hover::after {
-  width: 80%;
+.btn-nav:hover::after {
+  width: 60%;
 }
 
-/* =========================
-   USUARIO
-========================= */
+.btn-nav:active {
+  background: rgba(176, 141, 87, 0.14);
+}
+
+/* =============================================================
+   ÁREA DE USUARIO (derecha)
+   ============================================================= */
+
+.nav-usuario {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+
+  padding-left: 20px;
+  border-left: 1px solid rgba(176, 141, 87, 0.25);
+}
 
 .usuario-nombre {
-  padding: 10px 18px;
-
-  border-left: 1px solid rgba(176,141,87,0.2);
-
-  color: #7c6a4a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
   font-weight: 500;
-  margin-left: 10px;
+  color: #7c6a4a;
+  white-space: nowrap;
 }
 
-/* =========================
-   BOTÓN LOGOUT
-========================= */
-
+/* ── Botón Cerrar Sesión ── */
 .btn-logout {
-  background: linear-gradient(
-    90deg,
-    #b08d57,
-    #e7d3a4
-  ) !important;
+  background: linear-gradient(135deg, #b08d57 0%, #d4aa70 50%, #b08d57 100%);
+  background-size: 200% auto;
 
-  color: white !important;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
 
-  border-radius: 30px !important;
+  padding: 9px 20px;
 
-  padding: 12px 22px !important;
-
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.83rem;
   font-weight: 600;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
 
-  box-shadow:
-    0 5px 15px rgba(176,141,87,0.25);
+  cursor: pointer;
+  transition: background-position 0.4s ease,
+              transform 0.2s ease,
+              box-shadow 0.25s ease;
+
+  box-shadow: 0 4px 14px rgba(176, 141, 87, 0.30);
 }
 
 .btn-logout:hover {
+  background-position: right center;
   transform: translateY(-2px);
-
-  box-shadow:
-    0 10px 25px rgba(176,141,87,0.35);
+  box-shadow: 0 8px 22px rgba(176, 141, 87, 0.42);
 }
 
-/* Evita la línea inferior del logout */
-
-.btn-logout::after {
-  display: none;
+.btn-logout:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(176, 141, 87, 0.25);
 }
 
-/* =========================
+/* =============================================================
    RESPONSIVE
-========================= */
+   ============================================================= */
 
 @media (max-width: 1100px) {
-
   .navbar {
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
+    flex-wrap: wrap;
+    padding: 14px 24px;
+    gap: 12px;
   }
 
-  .navbar nav {
+  .nav-links {
     flex-wrap: wrap;
     justify-content: center;
+    flex: unset;
+    width: 100%;
+    order: 3;
   }
 
+  .nav-usuario {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .btn-nav {
+    font-size: 0.82rem;
+    padding: 8px 12px;
+  }
 }

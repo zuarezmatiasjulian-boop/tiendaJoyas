@@ -1,4 +1,32 @@
-{
-  "indexes": [],
-  "fieldOverrides": []
+/*me conecto a esta base*/{
+  "firestore":{
+    "database":"(default)",
+    "location":"nam5",
+    "rules":"firestore.rules",
+    "indexes":"firestore.indexes.json"
+  },
+  /*se publica en  */
+  "hosting":{
+    "public":"",
+    "ignore":[
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    /*-condiciones -*/
+    "rewites":[
+      {
+        "source":"**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "auth":{
+    "providers":{
+      "googleSigIn":{
+        "oAuthBrandDisplayName": "beltran",
+        "supportEmail":"support@undefined.firebaseapp.com"
+      }
+  }
+}
 }
